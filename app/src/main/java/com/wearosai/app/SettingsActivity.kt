@@ -61,8 +61,8 @@ class SettingsActivity : ComponentActivity() {
         const val KEY_API_KEY = "api_key"
         const val KEY_API_URL = "api_url"
         const val KEY_MODEL_NAME = "model_name"
-        const val DEFAULT_API_URL = "https://api.openai.com/v1/chat/completions"
-        const val DEFAULT_MODEL = "gpt-3.5-turbo"
+        const val DEFAULT_API_URL = "https://zenmux.ai/api/v1/chat/completions"
+        const val DEFAULT_MODEL = "xiaomi/mimo-v2-flash"
 
         fun getEncryptedPrefs(context: Context): SharedPreferences {
             val masterKey = MasterKey.Builder(context)

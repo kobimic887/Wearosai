@@ -33,7 +33,7 @@ class OpenAIClient(private val context: Context) {
             put("model", modelName)
             put("messages", JSONArray().apply {
                 put(JSONObject().apply {
-                    put("role", "user")
+                    put("role", "smart explainer")
                     put("content", prompt)
                 })
             })
