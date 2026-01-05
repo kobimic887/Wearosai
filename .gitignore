@@ -1,0 +1,35 @@
+# Gradle files
+.gradle/
+build/
+!gradle-wrapper.jar
+
+# Local configuration file
+local.properties
+
+# IntelliJ/Android Studio
+.idea/
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Kotlin
+*.class
+
+# APK files
+*.apk
+*.ap_
+*.aab
+
+# Generated files
+gen/
+out/
+
+# Log files
+*.log
+
+# Android specific
+captures/
+.externalNativeBuild/
+.cxx/
