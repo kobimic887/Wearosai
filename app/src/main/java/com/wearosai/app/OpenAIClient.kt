@@ -28,10 +28,15 @@ class OpenAIClient(private val context: Context) {
         val apiKey = prefs.getString(SettingsActivity.KEY_API_KEY, "") ?: ""
         val apiUrl = prefs.getString(SettingsActivity.KEY_API_URL, SettingsActivity.DEFAULT_API_URL) ?: SettingsActivity.DEFAULT_API_URL
         val modelName = prefs.getString(SettingsActivity.KEY_MODEL_NAME, SettingsActivity.DEFAULT_MODEL) ?: SettingsActivity.DEFAULT_MODEL
+        val systemPrompt = prefs.getString(SettingsActivity.KEY_SYSTEM_PROMPT, SettingsActivity.DEFAULT_SYSTEM_PROMPT) ?: SettingsActivity.DEFAULT_SYSTEM_PROMPT
 
         val jsonBody = JSONObject().apply {
             put("model", modelName)
             put("messages", JSONArray().apply {
+                put(JSONObject().apply {
+                    put("role", "developer")
+                    put("content", systemPrompt)
+                })
                 put(JSONObject().apply {
                     put("role", "user")
                     put("content", prompt)

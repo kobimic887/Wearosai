@@ -15,6 +15,7 @@ class SettingsActivity : ComponentActivity() {
     private lateinit var apiKeyInput: EditText
     private lateinit var apiUrlInput: EditText
     private lateinit var modelNameInput: EditText
+    private lateinit var systemPromptInput: EditText
     private lateinit var saveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,7 @@ class SettingsActivity : ComponentActivity() {
         apiKeyInput = findViewById(R.id.apiKeyInput)
         apiUrlInput = findViewById(R.id.apiUrlInput)
         modelNameInput = findViewById(R.id.modelNameInput)
+        systemPromptInput = findViewById(R.id.systemPromptInput)
         saveButton = findViewById(R.id.saveButton)
 
         loadSettings()
@@ -38,6 +40,7 @@ class SettingsActivity : ComponentActivity() {
         apiKeyInput.setText(prefs.getString(KEY_API_KEY, ""))
         apiUrlInput.setText(prefs.getString(KEY_API_URL, DEFAULT_API_URL))
         modelNameInput.setText(prefs.getString(KEY_MODEL_NAME, DEFAULT_MODEL))
+        systemPromptInput.setText(prefs.getString(KEY_SYSTEM_PROMPT, DEFAULT_SYSTEM_PROMPT))
     }
 
     private fun saveSettings() {
@@ -46,6 +49,7 @@ class SettingsActivity : ComponentActivity() {
             putString(KEY_API_KEY, apiKeyInput.text.toString().trim())
             putString(KEY_API_URL, apiUrlInput.text.toString().trim())
             putString(KEY_MODEL_NAME, modelNameInput.text.toString().trim())
+            putString(KEY_SYSTEM_PROMPT, systemPromptInput.text.toString().trim())
             apply()
         }
         Toast.makeText(this, R.string.settings_saved, Toast.LENGTH_SHORT).show()
@@ -61,8 +65,10 @@ class SettingsActivity : ComponentActivity() {
         const val KEY_API_KEY = "api_key"
         const val KEY_API_URL = "api_url"
         const val KEY_MODEL_NAME = "model_name"
+        const val KEY_SYSTEM_PROMPT = "system_prompt"
         const val DEFAULT_API_URL = "https://api.openai.com/v1/chat/completions"
-        const val DEFAULT_MODEL = "gpt-3.5-turbo"
+        const val DEFAULT_MODEL = "gpt-4"
+        const val DEFAULT_SYSTEM_PROMPT = "You are a helpful assistant."
 
         fun getEncryptedPrefs(context: Context): SharedPreferences {
             val masterKey = MasterKey.Builder(context)
