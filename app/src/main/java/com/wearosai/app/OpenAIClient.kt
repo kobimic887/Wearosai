@@ -18,13 +18,13 @@ class OpenAIClient(private val context: Context) {
         .build()
 
     fun isConfigured(): Boolean {
-        val prefs = context.getSharedPreferences(SettingsActivity.PREFS_NAME, Context.MODE_PRIVATE)
+        val prefs = SettingsActivity.getEncryptedPrefs(context)
         val apiKey = prefs.getString(SettingsActivity.KEY_API_KEY, "") ?: ""
         return apiKey.isNotEmpty()
     }
 
     fun sendRequest(prompt: String): String {
-        val prefs = context.getSharedPreferences(SettingsActivity.PREFS_NAME, Context.MODE_PRIVATE)
+        val prefs = SettingsActivity.getEncryptedPrefs(context)
         val apiKey = prefs.getString(SettingsActivity.KEY_API_KEY, "") ?: ""
         val apiUrl = prefs.getString(SettingsActivity.KEY_API_URL, SettingsActivity.DEFAULT_API_URL) ?: SettingsActivity.DEFAULT_API_URL
         val modelName = prefs.getString(SettingsActivity.KEY_MODEL_NAME, SettingsActivity.DEFAULT_MODEL) ?: SettingsActivity.DEFAULT_MODEL
