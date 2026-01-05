@@ -57,19 +57,6 @@
             android:padding="8dp"
             android:layout_marginTop="8dp" />
 
-        <EditText
-            android:id="@+id/systemPromptInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/system_prompt"
-            android:inputType="textMultiLine"
-            android:minLines="2"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/gray"
-            android:background="@android:color/darker_gray"
-            android:padding="8dp"
-            android:layout_marginTop="8dp" />
-
         <Button
             android:id="@+id/saveButton"
             android:layout_width="match_parent"

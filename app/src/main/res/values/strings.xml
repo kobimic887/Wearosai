@@ -5,7 +5,6 @@
     <string name="api_key">API Key</string>
     <string name="api_url">API URL</string>
     <string name="model_name">Model Name</string>
-    <string name="system_prompt">System Prompt</string>
     <string name="enter_prompt">Enter your prompt...</string>
     <string name="send">Send</string>
     <string name="save">Save</string>
