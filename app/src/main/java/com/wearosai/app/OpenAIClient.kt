@@ -48,14 +48,15 @@ class OpenAIClient(private val context: Context) {
             .post(requestBody)
             .build()
 
-        val response = client.newCall(request).execute()
-        val responseBody = response.body?.string() ?: ""
+        client.newCall(request).execute().use { response ->
+            val responseBody = response.body?.string() ?: ""
 
-        if (!response.isSuccessful) {
-            throw Exception("API Error: ${response.code} - $responseBody")
+            if (!response.isSuccessful) {
+                throw Exception("API Error: ${response.code} - $responseBody")
+            }
+
+            return parseResponse(responseBody)
         }
-
-        return parseResponse(responseBody)
     }
 
     private fun parseResponse(responseBody: String): String {
